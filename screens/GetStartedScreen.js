@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -22,29 +22,26 @@ export default class GetStartedScreen extends React.Component{
 
   return (
     <View style={styles.container}>
-
-      <Image source={require('../assets/Ellipse 3.png')} style={styles.ellipseImage} />
-      
-
-      <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
-      
-      <View style={styles.appText}>
-        <Text style={{color:"#fff",fontSize:15,fontWeight: '500',  margin: 20 }}>Booking App</Text>
-        <Text style={{color:"#fff",fontSize:13 }}>Lorem Ipsum Neque porro quisquam </Text>
-        <Text style={{color:"#fff",fontSize:13 }}>est qui dolorem ipsum quia dolor </Text> 
-        <Text style={{color:"#fff",fontSize:13 }}>Lorem sit amet consectetur adipisci velit....</Text>
-      </View> 
-
-
-      <Image source={require('../assets/Group 109.png')} style={styles.doctorImage} />
-
-      <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-        <Text style={{ fontWeight:"800",color: '#0c1960'}}> Get Started 
-          <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={15}  color="#323d79" />
-        </Text>
-      </TouchableOpacity>  
-
-      
+      <LinearGradient colors={['#38DFB1', '#25C4C2']} style={{position: 'absolute',left: 0,right: 0,top: 0,height: 800,}} />
+      <Image source={require('../assets/ellipse.png')} style={styles.ellipseImage} />
+      <View>
+        <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
+      </View>
+        <View style={styles.appText}>
+          <Text style={{color:"#fff",fontSize:15,fontWeight: '500',  margin: 20 }}>Booking App</Text>
+          <Text style={{color:"#fff",fontSize:13 }}>Lorem Ipsum Neque porro quisquam </Text>
+          <Text style={{color:"#fff",fontSize:13 }}>est qui dolorem ipsum quia dolor </Text> 
+          <Text style={{color:"#fff",fontSize:13 }}>Lorem sit amet consectetur adipisci velit....</Text>
+        </View>
+      <View>
+        <Image source={require('../assets/doctor.png')} style={styles.doctorImage} />
+      </View>
+      <View>
+        <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
+          <Text style={{ fontWeight:"700",color: '#0c1960',alignItems: 'center'}}> Get Started </Text>
+            <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={15}  color="#323d79" /> 
+        </TouchableOpacity>  
+      </View>
     </View> 
   );
   }
@@ -53,64 +50,47 @@ export default class GetStartedScreen extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#36dcb3',
-    overflow: 'hidden', 
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    paddingTop:50,
+    paddingBottom:50,
+    overflow: 'hidden',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
-
   forword:{
-    marginLeft: 10,
+    marginLeft: 5,
   },
-
   appText:{
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   ellipseImage:{
-    // marginHorizontal: 10,
-    // height:height,
-    // width:width,
-    // margin: 20,
-    
     height: 155,
     width: 210,
-    // padding: 0,
-    marginLeft: 275,
-    marginTop: -50,    
-    // textAlign:'right'
-
-
+    position: "absolute",
+    top: -50,
+    right:-80
   },
-
   medicareImage: {
-    marginHorizontal: 60,
-    marginTop: -50,
-    height:40,
-    // width:50,
-    margin: 30,
-
+    height:47,
+    width:212,
+    alignSelf: "center"
   },
-
   doctorImage:{
     height:300,
     width:282,
     marginLeft: -63,
     marginTop: 40,
   },
-
-
   button:{
-    marginHorizontal: 120,
+    alignSelf:"center",
     marginTop: 50,
     backgroundColor: '#fff',
     borderRadius: 30,
     height: 40,
-    // width: 100,
+    width: 130,
     alignItems: 'center',
-    justifyContent: 'center'    
+    justifyContent: 'center',
+    flexDirection:"row"    
   },
-
-
 });

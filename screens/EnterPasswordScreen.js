@@ -17,35 +17,19 @@ export default class EnterPasswordScreen extends React.Component{
 
   return (
     <View style={styles.container}>
-
-      <Image source={require('../assets/Ellipse 3.png')} style={styles.ellipseImage} />
-      
-
+      <Image source={require('../assets/ellipse.png')} style={styles.ellipseImage} />
       <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
-      
       <View style={styles.inputContainer}>
-        <Text style={styles.appText}>Enter Password </Text>       
+        <Text style={styles.appText}>Enter Password </Text>
       </View>
-      
-      <View style={styles.input}>  
-
+      <View style={styles.input}>
         <Icon style= {styles.phone} name="ios-lock" type="ionicon" size={30}  color="#323d79" />
-
         <TextInput style= {{height: 50, marginLeft: 20,}} placeholder="Password" />
-
-        
-
-        
-
         <TouchableOpacity onPress={() => this.props.navigation.navigate('ResetPassword') } >
             <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={30}  color="#323d79" />
-        </TouchableOpacity>  
-
-       </View>     
-
-      <Text style= {styles.otpMessage} >Didn't remember password? <Text style ={{color:'blue', fontWeight: 'bold'}}> Reset </Text></Text>       
-
-
+        </TouchableOpacity>
+       </View>
+      <Text style= {styles.otpMessage} >Didn't remember password? <Text style ={{color:'blue', fontWeight: 'bold'}}> Reset </Text></Text>
     </View> 
   );
   }
@@ -80,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 15,
     alignItems: 'center',
-    justifyContent: 'left', 
+    justifyContent: 'flex-start', 
     flexDirection: 'row',   
     marginLeft: 20,
     marginRight: 20,  
