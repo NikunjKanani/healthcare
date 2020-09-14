@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity,ScrollView } from 'react-native';
-
-
+import { StyleSheet, Text, View, Image, Dimensions, Button, TextInput, TouchableOpacity, SafeAreaView, ImageBackground  } from 'react-native';
+//import { LinearGradient } from 'expo-linear-gradient'
+//import LinearGradient from 'react-native-linear-gradient';
 import { createStackNavigator } from 'react-navigation-stack';
 
 
@@ -12,40 +12,35 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import { Icon } from 'react-native-elements';
 
-
 const { width, height } = Dimensions.get("screen");
-
 /*export default function GetStartedScreen() {*/
 export default class GetStartedScreen extends React.Component{
 
   render(){
 
   return (
-    <ScrollView style={styles.container}>
-
-      <Image source={require('../assets/Ellipse.png')} style={styles.ellipseImage} />
-      
-
-      <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
-      
-      <View style={styles.appText}>
-        <Text style={{color:"#fff",fontSize:15,fontWeight: '500',  margin: 20 }}>Booking App</Text>
-        <Text style={{color:"#fff",fontSize:13 }}>Lorem Ipsum Neque porro quisquam </Text>
-        <Text style={{color:"#fff",fontSize:13 }}>est qui dolorem ipsum quia dolor </Text> 
-        <Text style={{color:"#fff",fontSize:13 }}>Lorem sit amet consectetur adipisci velit....</Text>
-      </View> 
-
-
-      <Image source={require('../assets/doctor.png')} style={styles.doctorImage} />
-
-      <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-        <Text style={{ fontWeight:"800",color: '#0c1960'}}> Get Started </Text>
-          <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={15}  color="#323d79" />
-        
-      </TouchableOpacity>  
-
-      
-    </ScrollView> 
+    <View style={styles.container}>
+      <Image source={require('../assets/main-bg.png')} style={styles.bgIamge} />
+      <Image source={require('../assets/ellipse.png')} style={styles.ellipseImage} />
+      <View>
+        <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
+      </View>
+        <View style={styles.appText}>
+          <Text style={{color:"#fff",fontSize:15,fontWeight: '500',  margin: 20 }}>Booking App</Text>
+          <Text style={{color:"#fff",fontSize:13 }}>Lorem Ipsum Neque porro quisquam </Text>
+          <Text style={{color:"#fff",fontSize:13 }}>est qui dolorem ipsum quia dolor </Text> 
+          <Text style={{color:"#fff",fontSize:13 }}>Lorem sit amet consectetur adipisci velit....</Text>
+        </View>
+      <View>
+        <Image source={require('../assets/doctor.png')} style={styles.doctorImage} />
+      </View>
+      <View>
+        <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
+          <Text style={{ fontWeight:"700",color: '#0c1960',alignItems: 'center'}}> Get Started </Text>
+            <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={15}  color="#323d79" /> 
+        </TouchableOpacity>  
+      </View>
+    </View>
   );
   }
 }
@@ -53,64 +48,54 @@ export default class GetStartedScreen extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#36dcb3',
-    overflow: 'hidden', 
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    paddingTop:50,
+    paddingBottom:50,
+    overflow: 'hidden',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
-
+  bgIamge:{
+    width:'100%',
+    height:'100%',
+    position:"absolute",
+    left:0,
+    top:0
+  },
   forword:{
-    marginLeft: 10,
+    marginLeft: 5,
   },
-
   appText:{
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   ellipseImage:{
-    // marginHorizontal: 10,
-    // height:height,
-    // width:width,
-    // margin: 20,
-    
     height: 155,
     width: 210,
-    // padding: 0,
-    marginLeft: 275,
-    marginTop: -50,    
-    // textAlign:'right'
-
-
+    position: "absolute",
+    top: -50,
+    right:-80
   },
-
   medicareImage: {
-    marginHorizontal: 60,
-    marginTop: -50,
-    height:40,
-    // width:50,
-    margin: 30,
-
+    height:47,
+    width:212,
+    alignSelf: "center"
   },
-
   doctorImage:{
     height:300,
     width:282,
     marginLeft: -63,
     marginTop: 40,
   },
-
-
   button:{
-    marginHorizontal: 120,
+    alignSelf:"center",
     marginTop: 50,
     backgroundColor: '#fff',
     borderRadius: 30,
     height: 40,
-    // width: 100,
+    width: 130,
     alignItems: 'center',
-    justifyContent: 'center'    
+    justifyContent: 'center',
+    flexDirection:"row"    
   },
-
-
 });

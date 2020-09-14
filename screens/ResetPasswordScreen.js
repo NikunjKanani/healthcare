@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -17,35 +17,25 @@ export default class ResetPasswordScreen extends React.Component{
 
   return (
     <View style={styles.container}>
-
-      <Image source={require('../assets/Ellipse.png')} style={styles.ellipseImage} />
-      
-
+      <LinearGradient colors={['#38DFB1', '#25C4C2']} style={{position: 'absolute',left: 0,right: 0,top: 0,height: 800,}} />
+      <Image source={require('../assets/ellipse.png')} style={styles.ellipseImage} />
       <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />
-      
       <View style={styles.inputContainer}>
-        <Text style={styles.appText}>Reset Password </Text>       
+        <View>
+          <Text style={styles.appText}>Reset Password </Text>       
+        </View>
+        <View style={styles.input}>
+          <Image source={require('../assets/icon-feather-lock.png')} style= {styles.phone}/>
+          <TextInput style= {{height: 50, marginLeft: 20,}} placeholder="Registered Mobile Number" />
+          <TouchableOpacity style= {styles.forword} onPress= {() => this.props.navigation.navigate('Dashboard1')}>
+          <Image source={require('../assets/icon-material-navigate-next.png')} style= {styles.forwordIcon} />
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text style= {styles.otpMessage} >Remember password? <Text style ={{color:'#0C1960', fontWeight: 'bold'}}> Login </Text></Text>
+        </View>
       </View>
-      
-      <View style={styles.input}>  
-
-        <Icon style= {styles.phone} name="ios-lock" type="ionicon" size={30}  color="#323d79" />
-
-        <TextInput style= {{height: 50, marginLeft: 20,}} placeholder="Registered Mobile Number" />
-
-        
-
-
-        <TouchableOpacity onPress= {() => this.props.navigation.navigate('Dashboard')}>
-            <Icon style= {styles.forword} name="ios-arrow-forward" type="ionicon" size={30}  color="#323d79" />
-        </TouchableOpacity>  
-
-       </View>     
-
-      <Text style= {styles.otpMessage} >Remember password? <Text style ={{color:'blue', fontWeight: 'bold'}}> Login </Text></Text>       
-
-
-    </View> 
+      </View>
   );
   }
 }
@@ -56,24 +46,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#36dcb3',
     overflow: 'hidden',
   },
-
- appText:{
+  appText:{
     alignItems: 'center',
     justifyContent: 'center',
     color:"#fff",
     fontSize:20,
-    padding: 10,
-    fontWeight: 'bold' 
+    paddingBottom: 10,
+    paddingLeft:20,
+    fontWeight: 600 
   },
-
-  inputContainer:{
-    paddingTop: 80,
-    marginLeft: 20,
-    marginRight: 20,  
-    
+  inputContainer:{ 
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
-
-
   input:{
     height: 50,
     backgroundColor: '#fff',
@@ -83,44 +70,48 @@ const styles = StyleSheet.create({
     flexDirection: 'row',   
     marginLeft: 20,
     marginRight: 20,  
-    
+    position: "relative"
   },
-
   forword:{
-    marginLeft: 10,
+   position: "absolute",
+   right:15,
+   top:15
   },
-
+  forwordIcon:{
+   width:12,
+   height:18
+  },
   phone:{
     marginLeft: 20,
-
+    width:17,
+    height:19
   },
-
   ellipseImage:{
     height: 155,
     width: 210,
-    // padding: 0,
-    marginLeft: 275,
-    marginTop: -50,    
-    // textAlign:'right'
+    position: "absolute",
+    top: -70,
+    right:-100
   },
-
-   medicareImage: {
-    marginHorizontal: 60,
-    marginTop: -50,
-    height:40,
-    // width:50,
-    margin: 30,
+  medicareImage: {
+    height:47,
+    width:212,
+    alignSelf: "center",
+    marginTop:30
   },
-
-  otpMessage:{
-    color: '#fff',
+  button:{
+    marginHorizontal: 120,
+    marginTop: 50,
+    backgroundColor: '#fff',
+    borderRadius: 30,
+    height: 40,
+    // width: 100,
     alignItems: 'center',
-    justifyContent: 'center', 
-    padding: 10,
-    marginLeft: 60,
-
-    
+    justifyContent: 'center'    
+  },
+  otpMessage:{
+    alignSelf:"center",
+    marginTop:15,
+    color: "#ffffff"
   }
-
-
 });
