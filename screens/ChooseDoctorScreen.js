@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity,ScrollView } from 'react-native';
-
+//import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -12,295 +13,136 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';  
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome';  
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';  
+import { block } from 'react-native-reanimated';
 
 
 const { width, height } = Dimensions.get("screen");
 
 export default class ChooseDoctorScreen extends React.Component{
   render(){
-
   return (
     <ScrollView style={styles.container}>
-
       <View style={styles.topContainer}>
-
-        <View style={styles.topPart}>  
-
-          <TouchableOpacity style={{alignItems: 'flex-start', margin: 10 }} onPress= {this.props.navigation.openDrawer}>
-
-              <Icon name="md-menu" type="ionicon" size={30}  color="#323d79" />
-
-              {/*<Icon 
-                  style={{ paddingRight: 10, alignItems: 'flex-end' }} onPress= {this.props.navigation.closeDrawer}  name="close" size={30} 
-              />*/}
-          </TouchableOpacity>
-
-          <Text style={styles.topText}>Choose Doctor</Text>
-
-          {/*<Icon style={styles.noti} name="md-notifications" type="ionicon" size={30}  color="#323d79" />*/}
-          <SimpleLineIcons style={styles.noti} size={30}  color="#323d79" name="bell"></SimpleLineIcons>
-
-          
-
-        </View>  
-
-
         <View>
-          <Text style={{color: '#FFF' , marginLeft: 20}}>Consultaion For {'\n'}Alex Thomas
-
-            <Feather size={20} name="chevron-down"></Feather>
-
-          </Text>
-
-          <TextInput
-            style={styles.input}
-            placeholder="Fever"
-            
-          />
+          <LinearGradient colors={['#2ED2E5', '#6F78F7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{position: 'absolute',left: 0,right: 0,top: 0,width:'100%',height:180,borderBottomLeftRadius:15,borderBottomRightRadius:15,}}/>
+          <View style={styles.topPart}>  
+            <TouchableOpacity style={{alignItems: 'flex-start', margin: 10,padding:3}} onPress= {this.props.navigation.openDrawer}>
+                <Image source={require('../assets/menu-icon.png')} style={styles.menuIcon} />
+                {/*<Icon 
+                    style={{ paddingRight: 10, alignItems: 'flex-end' }} onPress= {this.props.navigation.closeDrawer}  name="close" size={30} 
+                />*/}
+            </TouchableOpacity>
+            <Text style={styles.topText}>Choose Doctor</Text>
+            {/*<Icon style={styles.noti} name="md-notifications" type="ionicon" size={30}  color="#323d79" />*/}
+            {/* <SimpleLineIcons style={styles.noti} size={30}  color="#323d79" name="bell"></SimpleLineIcons> */}
+            <Image source={require('../assets/notification.png')} style={styles.notification} />
+          </View>
+          <View>
+            <Text style={{color: '#FFF' , marginLeft: 10}}>Consultaion For,</Text>
+          </View>
+          <View style={{flexDirection:"row"}}>
+            <Text style={{color: '#FFF', fontWeight:'600', marginLeft: 10,textAlignVertical:"center"}}>Alex Thomas</Text>
+            <Feather style={{color:'#fff',textAlignVertical:"center"}} size={18} name="chevron-down"></Feather>
+          </View>
+          <View>
+            <TextInput style={styles.input} placeholder="Fever"/>
+            <Feather size={18} name="search" style={{position:"absolute",top:18,right:20,color:'#555555'}}></Feather>
+          </View>
           {/*<Feather size={23} name="search"></Feather>*/}
-
-
-          <Text style={{color: '#FFF' , marginLeft: 20, marginBottom: 10}}>
-          
-          <Feather size={15} name="map-pin"></Feather>
-          
-            <Text style={{color: '#FFF' , margin: 10}}>
-
-              Pune,India
-
+          <View style={{zIndex:9}}>
+            <Text style={{color: '#FFF' , marginLeft: 10, marginBottom: 10}}>
+            <Feather size={15} name="map-pin"></Feather>
+              <Text style={{color: '#FFF' , margin: 10}}>Pune,India</Text>
+            <Feather size={15} name="rotate-cw"></Feather>
             </Text>
-          
-          <Feather size={15} name="rotate-cw"></Feather>
-          
-          </Text>    
-        </View>  
+          </View>    
+        </View>
       </View>
 
       <View style={styles.doctorContainer}>
-        
-        <View style={styles.topPart}> 
-          <Text style={{color: '#000' , margin: 20}}> Doctor for <Text style={{ fontWeight: 'bold'}} >Fever </Text></Text>
-
-          <Text style={styles.sorFil}> Sort   <Feather size={20} name="chevron-down"></Feather> </Text> 
-          <Text style={styles.sorFil}> Filter <Feather size={20} name="chevron-down"></Feather> </Text> 
-        
-        </View>
-
-        <View style={styles.doctorDetails}>
-
-          <View style={{width: '30%'}}>
-          
-          <Image source={require('../assets/nurse-2019420_1920.png')} style={styles.scrollImage} />
-          <Text style={styles.buttonSpe}> Physicain </Text>                  
-
+        <View style={{flex:1, flexDirection: 'row',marginLeft:10,marginRight:10,marginTop:25,marginBottom:10}}>
+          <View style={{flexGrow:1,alignSelf: "center"}}> 
+            <Text style={{color:'#000',fontSize:16}}> Doctor for <Text style={{ fontWeight: 'bold'}} >Fever </Text></Text>
           </View>
-
-          <View style={{width: '70%',}}>  
-
-            <View style={{flexDirection: 'row' }}>
-              <Text style={{fontSize: 18,marginLeft: 10,fontWeight: 'bold'}}> Dr. Neena Gupta  </Text>          
-              <SimpleLineIcons style={{marginLeft: '20%'}} size={20} name="share"></SimpleLineIcons> 
-
+          <View style={{alignContent:"flex-end",alignSelf:"flex-end",alignItems:"flex-end",flexDirection:"row"}}>
+            <Text style={styles.sorFil}><Text style={{textAlignVertical:"center"}}>Sort</Text><Feather size={18} name="chevron-down" style={{textAlignVertical:"center"}}></Feather></Text> 
+            <Text style={styles.sorFil}><Text style={{textAlignVertical:"center"}}>Filter</Text><Feather size={18} name="chevron-down" style={{textAlignVertical:"center"}}></Feather></Text> 
+          </View>
+        </View>
+        <View style={styles.doctorDetails}>
+          <View style={{width: '35%'}}>
+          <Image source={require('../assets/nurse-2019420_1920.png')} style={styles.scrollImage} />
+          <Text style={styles.buttonSpe}>Physicain</Text>
+          </View>
+          <View style={{width: '65%',}}>
+            <View style={{flexDirection:'row'}}>
+              <Text style={{fontSize: 18,marginLeft: 10,marginTop:5,fontWeight: 'bold',flexGrow:1,}}>Dr. Neena Gupta  </Text>
+              <SimpleLineIcons style={{margin:10}} size={16} name="share"></SimpleLineIcons>
             </View>
-
-            <View style={{borderRadius: 10,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row' }}>
-              
-              <Image source={require('../assets/favicon.png')} style={{height:50, width: 50,margin: 5,}} />
-              <Text style={{fontSize: 12,fontWeight: 'bold'}}> Appolo Hospital {'\n'} Pune  </Text>          
-
+            <View style={{borderRadius: 10,borderWidth: 1,marginHorizontal:10,borderColor: '#5ddceb',flexDirection: 'row',minHeight:50,padding:7}}>
+              <Image source={require('../assets/favicon.png')} style={{width: 35,}} />
+              <View style={{borderLeftWidth:1, borderColor:'#5ddceb',marginLeft:5,paddingLeft:5}}>
+                <Text style={{fontSize: 14,fontWeight: 'bold',}}>Appolo Hospital</Text>
+                <Text style={{fontSize: 14,}}>Pune</Text>
+              </View>
             </View>
-            <Text style={styles.buttonExp}> 18 years exp </Text>                  
-
+            <Text style={styles.buttonExp}>18 years exp</Text>
             <View style={{marginLeft:15}}>
-              
-              <Text>MBBS/MD </Text> 
-
+              <Text style={{marginVertical:7}}>MBBS/MD </Text>
               <FontAwesome size={15} name="language"> <Text>English,Hindi </Text></FontAwesome>
             </View>
-
-            <View style={{flexDirection: 'row',width: '25%' }}>
-              
-              <View style={{borderRadius: 5,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row',width: '100%' }}>
-              
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text>          
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text> 
-
-              </View>         
-
-              <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-                
-                <Text style={{ fontWeight:"bold",color: '#fff'}}> Consult Now </Text>                  
-                
+            <View style={{flexDirection: 'row',margin:10}}>
+              <View style={{borderRadius: 5,borderWidth: 1,borderColor: '#555',flexDirection: 'row',padding:4,}}>
+                <Text style={{fontSize: 13,color:'#555',textDecorationLine: 'line-through',paddingRight:5,marginRight:5,borderColor:'#555555',borderRightWidth:1}}><FontAwesome5 style={{marginRight:2}} size={12} name="rupee"></FontAwesome5>500</Text>
+                <Text style={{fontSize: 13}}><FontAwesome5 style={{marginRight:2}} size={12} name="rupee"></FontAwesome5>500</Text>
+              </View>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('LoginRegister')} style={{flexGrow:1,alignItems:"flex-end"}}>
+                <LinearGradient colors={['#2ED2E5', '#6F78F7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.consultNow}>
+                  <Text style={{ fontWeight:"600",color: '#fff'}}> Consult Now </Text>
+                </LinearGradient>
               </TouchableOpacity>
-
             </View>
-
           </View>
         </View>
-
         <View style={styles.doctorDetails}>
-
-          <View style={{width: '30%'}}>
-          
+          <View style={{width: '35%'}}>
           <Image source={require('../assets/nurse-2019420_1920.png')} style={styles.scrollImage} />
-          <Text style={styles.buttonSpe}> Physicain </Text>                  
-
+          <Text style={styles.buttonSpe}>Physicain</Text>
           </View>
-
-          <View style={{width: '70%',}}>  
-
-            <View style={{flexDirection: 'row' }}>
-              <Text style={{fontSize: 18,marginLeft: 10,fontWeight: 'bold'}}> Dr. Neena Gupta  </Text>          
-              <SimpleLineIcons style={{marginLeft: '20%'}} size={20} name="share"></SimpleLineIcons> 
-
+          <View style={{width: '65%',}}>
+            <View style={{flexDirection:'row'}}>
+              <Text style={{fontSize: 18,marginLeft: 10,marginTop:5,fontWeight: 'bold',flexGrow:1,}}>Dr. Neena Gupta  </Text>
+              <SimpleLineIcons style={{margin:10}} size={16} name="share"></SimpleLineIcons>
             </View>
-
-            <View style={{borderRadius: 10,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row' }}>
-              
-              <Image source={require('../assets/favicon.png')} style={{height:50, width: 50,margin: 5,}} />
-              <Text style={{fontSize: 12,fontWeight: 'bold'}}> Appolo Hospital {'\n'} Pune  </Text>          
-
+            <View style={{borderRadius: 10,borderWidth: 1,marginHorizontal:10,borderColor: '#5ddceb',flexDirection: 'row',minHeight:50,padding:7}}>
+              <Image source={require('../assets/favicon.png')} style={{width: 35,}} />
+              <View style={{borderLeftWidth:1, borderColor:'#5ddceb',marginLeft:5,paddingLeft:5}}>
+                <Text style={{fontSize: 14,fontWeight: 'bold',}}>Appolo Hospital</Text>
+                <Text style={{fontSize: 14,}}>Pune</Text>
+              </View>
             </View>
-            <Text style={styles.buttonExp}> 18 years exp </Text>                  
-
+            <Text style={styles.buttonExp}>18 years exp</Text>
             <View style={{marginLeft:15}}>
-              
-              <Text>MBBS/MD </Text> 
-
+              <Text style={{marginVertical:7}}>MBBS/MD </Text>
               <FontAwesome size={15} name="language"> <Text>English,Hindi </Text></FontAwesome>
             </View>
-
-            <View style={{flexDirection: 'row',width: '25%' }}>
-              
-              <View style={{borderRadius: 5,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row',width: '100%' }}>
-              
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text>          
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text> 
-
-              </View>         
-
-              <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-                
-                <Text style={{ fontWeight:"bold",color: '#fff'}}> Consult Now </Text>                  
-                
+            <View style={{flexDirection: 'row',margin:10}}>
+              <View style={{borderRadius: 5,borderWidth: 1,borderColor: '#555',flexDirection: 'row',padding:4,}}>
+                <Text style={{fontSize: 13,color:'#555',textDecorationLine: 'line-through',paddingRight:5,marginRight:5,borderColor:'#555555',borderRightWidth:1}}><FontAwesome5 style={{marginRight:2}} size={12} name="rupee"></FontAwesome5>500</Text>
+                <Text style={{fontSize: 13}}><FontAwesome5 style={{marginRight:2}} size={12} name="rupee"></FontAwesome5>500</Text>
+              </View>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('LoginRegister')} style={{flexGrow:1,alignItems:"flex-end"}}>
+                <LinearGradient colors={['#2ED2E5', '#6F78F7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.consultNow}>
+                  <Text style={{ fontWeight:"600",color: '#fff'}}> Consult Now </Text>
+                </LinearGradient>
               </TouchableOpacity>
-
             </View>
-
           </View>
         </View>
-
-        <View style={styles.doctorDetails}>
-
-          <View style={{width: '30%'}}>
-          
-          <Image source={require('../assets/nurse-2019420_1920.png')} style={styles.scrollImage} />
-          <Text style={styles.buttonSpe}> Physicain </Text>                  
-
-          </View>
-
-          <View style={{width: '70%',}}>  
-
-            <View style={{flexDirection: 'row' }}>
-              <Text style={{fontSize: 18,marginLeft: 10,fontWeight: 'bold'}}> Dr. Neena Gupta  </Text>          
-              <SimpleLineIcons style={{marginLeft: '20%'}} size={20} name="share"></SimpleLineIcons> 
-
-            </View>
-
-            <View style={{borderRadius: 10,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row' }}>
-              
-              <Image source={require('../assets/favicon.png')} style={{height:50, width: 50,margin: 5,}} />
-              <Text style={{fontSize: 12,fontWeight: 'bold'}}> Appolo Hospital {'\n'} Pune  </Text>          
-
-            </View>
-            <Text style={styles.buttonExp}> 18 years exp </Text>                  
-
-            <View style={{marginLeft:15}}>
-              
-              <Text>MBBS/MD </Text> 
-
-              <FontAwesome size={15} name="language"> <Text>English,Hindi </Text></FontAwesome>
-            </View>
-
-            <View style={{flexDirection: 'row',width: '25%' }}>
-              
-              <View style={{borderRadius: 5,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row',width: '100%' }}>
-              
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text>          
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text> 
-
-              </View>         
-
-              <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-                
-                <Text style={{ fontWeight:"bold",color: '#fff'}}> Consult Now </Text>                  
-                
-              </TouchableOpacity>
-
-            </View>
-
-          </View>
-        </View>
-
-        <View style={styles.doctorDetails}>
-
-          <View style={{width: '30%'}}>
-          
-          <Image source={require('../assets/nurse-2019420_1920.png')} style={styles.scrollImage} />
-          <Text style={styles.buttonSpe}> Physicain </Text>                  
-
-          </View>
-
-          <View style={{width: '70%',}}>  
-
-            <View style={{flexDirection: 'row' }}>
-              <Text style={{fontSize: 18,marginLeft: 10,fontWeight: 'bold'}}> Dr. Neena Gupta  </Text>          
-              <SimpleLineIcons style={{marginLeft: '20%'}} size={20} name="share"></SimpleLineIcons> 
-
-            </View>
-
-            <View style={{borderRadius: 10,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row' }}>
-              
-              <Image source={require('../assets/favicon.png')} style={{height:50, width: 50,margin: 5,}} />
-              <Text style={{fontSize: 12,fontWeight: 'bold'}}> Appolo Hospital {'\n'} Pune  </Text>          
-
-            </View>
-            <Text style={styles.buttonExp}> 18 years exp </Text>                  
-
-            <View style={{marginLeft:15}}>
-              
-              <Text>MBBS/MD </Text> 
-
-              <FontAwesome size={15} name="language"> <Text>English,Hindi </Text></FontAwesome>
-            </View>
-
-            <View style={{flexDirection: 'row',width: '25%' }}>
-              
-              <View style={{borderRadius: 5,borderWidth: 2,margin: 10,borderColor: 'skyblue',flexDirection: 'row',width: '100%' }}>
-              
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text>          
-                <Text style={{fontSize: 12,fontWeight: 'bold'}}> 500  </Text> 
-
-              </View>         
-
-              <TouchableOpacity style= {styles.button} onPress={() => this.props.navigation.navigate('LoginRegister')} > 
-                
-                <Text style={{ fontWeight:"bold",color: '#fff'}}> Consult Now </Text>                  
-                
-              </TouchableOpacity>
-
-            </View>
-
-          </View>
-        </View>
-
-
-        
-
       </View>
     </ScrollView> 
   );
-  }
+}
 }
 
 const styles = StyleSheet.create({
@@ -308,114 +150,98 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     // overflow: 'hidden',
-    marginTop: 30
   },
-
-  topContainer:{
-    backgroundColor: '#3fbbea',
-    borderBottomRightRadius: 15,
-    borderBottomLeftRadius: 15,
+  menuIcon:{
+    width:22,
+    height:16
   },
-
   topPart:{
-    flexDirection: 'row', 
-
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
-
   topText:{
-    
-    justifyContent: 'center', 
-    alignItems: 'center',
     color: '#FFF',
-    marginLeft: '28%',
-    marginTop: 20,
-    marginRight: '28%',
+    flexGrow:1,
+    fontSize:16,
+    textAlign:"center",
+    alignSelf:"center",
+    fontWeight: '600'
   },
-
-  noti:{
-    /*alignItems: 'flex-end',
-    justifyContent: 'flex-end',*/
-    margin: 2,
-    
-
+  notification:{
+    width:16,
+    height:20,
+    padding:5,
+    marginRight:15,
+    alignSelf:"center",
+    alignItems:"flex-end"
   },
- 
   input:{
     borderBottomColor: '#8A8F9E',
     borderBottomWidth: StyleSheet.hairlinerWidth,
-    height: 30,
     borderRadius: 5,
-    fontSize: 10,
+    fontSize: 14,
     margin: 10,
-    marginLeft:20,
-    borderColor: '#FFF',
+    padding:10,
     backgroundColor: '#FFF',
     color:"#161F3D",
-
   },
-
-  doctorContainer:{
-
-  },
-
   doctorDetails:{
     borderRadius: 10,
-    borderWidth: 0.5,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.16,
+    shadowRadius: 6,
     margin: 10,
-    flexDirection: 'row'  
-
-
+    flexDirection: 'row'
   },
-
   sorFil:{
-     margin: 20,
      borderRadius: 30,
      borderWidth: 1,
-     textAlign: 'center', 
-     paddingLeft: 5
+     paddingLeft: 8,
+    paddingRight:6,
+     paddingTop:1,
+     paddingBottom:3,
+     marginHorizontal:5
   },
-
   scrollImage:{
-    height:200,
-    width:100,
-
-    margin: 3
+    height:'100%',
+    width:'100%',
+    borderTopLeftRadius:10,
+    borderBottomLeftRadius:10,    
   },
-
-
-  button:{
-    // marginHorizontal: 120,
-    /*marginTop: 50,*/
-    backgroundColor: 'lightblue',
-    borderRadius: 10,
-    height: 30,
-    width: 100,
-    alignItems: 'center',
-    justifyContent: 'center'    
+  consultNow:{
+    borderRadius:5,
+    paddingHorizontal:8,
+    paddingVertical:6,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.16,
+    shadowRadius: 6,
   },
-
   buttonExp:{
-    backgroundColor: 'lightblue',
-    borderRadius: 10,
-    height: 20,
+    backgroundColor:'#5DDCEB',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     width: 100,
-    marginLeft: 70,
-    marginTop: -10,
-    marginBottom: 10,
-    alignItems: 'center',
-    justifyContent: 'center'    
+    fontSize:12,
+    alignSelf:"center",
+    textAlign:"center",
+    color:'#ffffff',
+    paddingTop:1,
+    paddingBottom:4
   },
-
   buttonSpe:{
     backgroundColor: '#fff',
-    borderRadius: 10,
-    height: 20,
-    width: 80,
-    marginLeft: 15,
-    marginTop: -20,
-    alignItems: 'center',
-    justifyContent: 'center'    
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    zIndex:9,
+    minWidth: 90,
+    alignSelf:"center",
+    textAlign:"center",
+    padding:3,
+    position:"absolute",
+    bottom:0,
+    fontWeight:'600'
   },
-
- 
 });

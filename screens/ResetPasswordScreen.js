@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+//import LinearGradient from "react-native-linear-gradient";
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { createStackNavigator } from 'react-navigation-stack';
@@ -43,8 +44,18 @@ export default class ResetPasswordScreen extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#36dcb3',
+    paddingTop:50,
     overflow: 'hidden',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+  },
+  bgIamge:{
+    width:'100%',
+    height:'100%',
+    position:"absolute",
+    left:0,
+    top:0
   },
   appText:{
     alignItems: 'center',
@@ -53,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     paddingBottom: 10,
     paddingLeft:20,
-    fontWeight: 600 
+    fontWeight: '600' 
   },
   inputContainer:{ 
     flex: 1,
@@ -73,13 +84,13 @@ const styles = StyleSheet.create({
     position: "relative"
   },
   forword:{
-   position: "absolute",
-   right:15,
-   top:15
+    position: "absolute",
+    right:15,
+    top:15
   },
   forwordIcon:{
-   width:12,
-   height:18
+    width:12,
+    height:18
   },
   phone:{
     marginLeft: 20,

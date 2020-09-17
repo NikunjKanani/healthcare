@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, Button, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+//import LinearGradient from "react-native-linear-gradient";
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { createStackNavigator } from 'react-navigation-stack';
@@ -17,7 +18,7 @@ export default class SetPasswordScreen extends React.Component{
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/main-bg.png')} style={styles.bgIamge} />
+      <LinearGradient colors={['#38DFB1', '#25C4C2']} style={{position: 'absolute',left: 0,right: 0,top: 0,width:'100%',height: '100%',}}/>
       <Image source={require('../assets/ellipse.png')} style={styles.ellipseImage} />
       <Image source={require('../assets/medicareLogo.png')} style={styles.medicareImage} />      
       <View style={styles.inputContainer}>
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop:50,
-    paddingBottom:50,
     overflow: 'hidden',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     paddingBottom: 10,
     paddingLeft:20,
-    fontWeight: 600 
+    fontWeight: '600' 
   },
   inputContainer:{ 
     flex: 1,
